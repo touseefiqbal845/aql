@@ -1,0 +1,7 @@
+export type Capability={id:string;provider:string;protocol:'mcp'|'a2a'|'rest'; input:object;output:object;sideEffect:boolean;approval:boolean;auth:'none';version:string;provenance:string};
+const obj=(properties:object,required:string[])=>({type:'object',properties,required,additionalProperties:false});
+export const capabilities:Capability[]=[
+{id:'invoice.search',provider:'local-mcp',protocol:'mcp',input:obj({customer_id:{type:'string'}},['customer_id']),output:obj({results:{type:'array',items:{type:'object'}}},['results']),sideEffect:false,approval:false,auth:'none',version:'1',provenance:'explicit fixture mapping'},
+{id:'invoice.analyze',provider:'local-a2a',protocol:'a2a',input:obj({invoices:{type:'array',items:{type:'object'}}},['invoices']),output:obj({summary:{type:'string'}},['summary']),sideEffect:false,approval:false,auth:'none',version:'1',provenance:'explicit fixture mapping'},
+{id:'email.send',provider:'local-rest',protocol:'rest',input:obj({recipient:{type:'string'},body:{type:'string'}},['recipient','body']),output:obj({id:{type:'string'},accepted:{type:'boolean'}},['id','accepted']),sideEffect:true,approval:true,auth:'none',version:'1',provenance:'fixtures/rest-api/openapi.json'}];
+export function resolve(id:string,registry=capabilities):Capability{const candidates=registry.filter(x=>x.id===id).sort((a,b)=>a.provider.localeCompare(b.provider));if(!candidates.length)throw new Error(`Unknown capability: ${id}`);return candidates[0]}

@@ -1,0 +1,2 @@
+import type {Program} from '../language/ast.js';
+export function plan(program:Program){const producers=new Map<string,number>();return program.map((s,index)=>{const exprs=s.kind==='return'?[s.value]:Object.values(s.args);const dependsOn=[...new Set(exprs.filter(e=>e.kind==='reference').map(e=>producers.get((e as {path:string[]}).path[0])!).filter(n=>n!==undefined))];if(s.kind==='invoke'&&s.variable)producers.set(s.variable,index);return {index,dependsOn,statement:s}})}

@@ -1,0 +1,5 @@
+# AQL 0.1 subset
+
+A program consists of invocation statements followed by a RETURN statement. Each statement ends in `;`. Invocations are `LET name = INVOKE 'capability'` or `INVOKE 'capability'`, followed optionally by `WITH name = expression, ...` and `REQUIRE APPROVAL`. Expressions are single-quoted strings, JSON-style numbers, true, false, null, or previously assigned variable references with dot-separated fields. Variables are immutable; duplicate names and duplicate arguments are rejected. Strings support backslash escapes for quote and backslash. Other escape sequences are not interpreted. References represent operation outputs rather than envelopes. A program requires a RETURN, which must be last. Unknown capabilities, unknown fields, forward references, missing/unknown inputs, incompatible top-level types and absent side-effect approval fail validation. Arguments and outputs are validated again against schemas at execution.
+
+The graph records direct variable dependencies; execution remains in source order. No loops, conditionals, object literals, arrays, operators, comments, parallelism, transactions or user-defined functions are specified.

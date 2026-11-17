@@ -1,0 +1,5 @@
+# Benchmark methodology
+
+`pnpm bench` is an exploratory microbenchmark of in-process parsing, validation and planning only. It performs 100 warmups and reports median and p95 across 1,000 runs; it excludes network, service startup, user approval, protocol execution and developer effort. Run several independent processes and report hardware, versions, distributions and raw samples before comparing anything.
+
+To test the hypothesis, preregister tasks, success and correctness criteria; compare AQL with direct SDK integration and other relevant orchestration approaches using equivalent fixtures, authentication and failure behavior. Randomize order, balance experience and learning effects, use multiple independent developers, and record integration time, lines changed, defects, security-policy failures, latency, resource use and maintenance effort. Test real protocol implementations and diverse providers, not merely the supplied fixtures. Analyze uncertainty and failed attempts; do not infer causation from this microbenchmark.

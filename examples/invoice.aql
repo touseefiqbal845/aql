@@ -1,0 +1,9 @@
+LET invoices = INVOKE 'invoice.search'
+  WITH customer_id = 'C123';
+LET analysis = INVOKE 'invoice.analyze'
+  WITH invoices = invoices.results;
+INVOKE 'email.send'
+  WITH recipient = 'customer@example.com',
+       body = analysis.summary
+  REQUIRE APPROVAL;
+RETURN analysis;
