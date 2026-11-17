@@ -120,11 +120,13 @@ See the [language specification](docs/specification.md), [architecture](docs/arc
 
 ## Research manuscript
 
-Read **[AQL: A Declarative Query Language for Unified Discovery and Execution of Heterogeneous AI Capabilities](docs/AQL_Research_Manuscript.pdf)** (17 November 2026).
+Read **[AQL: A Declarative Query Language for Unified Discovery and Execution of Heterogeneous AI Capabilities](docs/AQL_Research_Manuscript.pdf)** by **Touseef Iqbal** (revised 17 November 2026).
 
 The manuscript presents the conceptual design, capability model, safety goals, research questions, and a proposed evaluation against direct SDK integration and workflow orchestration baselines. It is a research manuscript, not a report of experimentally verified improvements.
 
-**Relationship to the implementation:** the manuscript describes implementation as future work. This repository now contains a limited executable vertical slice of that proposal. Broader registry ingestion, authorization, lifecycle guarantees, provider substitution, and comparative evaluation remain research and engineering work. Use the implementation documentation for current behavior; the manuscript's grammar and result-envelope examples are illustrative. The original PDF is included unchanged.
+**Relationship to the implementation:** the revised manuscript distinguishes the current local prototype from the broader proposed design. Section 10 outlines future work on bounded retries, failure classification, idempotency, cancellation, recovery, provider fallback, compensation, streaming, and candidate use cases. These are planned directions, not implemented guarantees or delivery commitments. Use the implementation documentation for current behavior; the manuscript's grammar and result-envelope examples are illustrative.
+
+The [editable manuscript](docs/AQL_Research_Manuscript.md) is included. To rebuild the PDF, install Python's `reportlab` package and run `python scripts/build_manuscript.py`.
 
 ## Evaluation
 
